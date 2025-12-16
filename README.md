@@ -30,6 +30,25 @@ These files are refined versions of the original NAB AL Tools prompts and agents
     *   Verifies glossary usage and placeholder integrity.
     *   Fixes or approves translations marked as "needs-review".
 
+## Workflow Architecture
+
+The system is designed as a three-layer architecture where each file plays a specific role.
+
+### Relationship Diagram
+
+```mermaid
+graph TD
+    User((User)) -->|1. Invokes| Prompt[Prompt File<br/>al-translate-xlf.prompt.md]
+    Prompt -->|2. Activates| Agent[Agent Definition<br/>al-translator.agent.md]
+    Agent -->|3. Follows| Instr[Instructions<br/>al-translate-xlf.instructions.md]
+    Agent -->|4. Executes| Tools[NAB AL Tools]
+    Tools -->|Updates| XLF[XLF Files]
+```
+
+1.  **The Prompt (Trigger)**: The user invokes a specific task (e.g., `/al-translate-xlf`). This file acts as the entry point and automatically selects the correct Agent.
+2.  **The Agent (Executor)**: The prompt activates the `al-translator` agent. This agent has access to the specific tools needed (Build, Refresh, Translate) and defines the high-level loop.
+3.  **The Instructions (Rules)**: The agent reads the detailed instructions to understand *how* to perform the task (e.g., "Swedish First" policy, Glossary rules).
+
 ## Usage
 
 ### 1. Prerequisites
@@ -37,15 +56,24 @@ These files are refined versions of the original NAB AL Tools prompts and agents
 *   An active Business Central project with an `app.json` and Translations folder.
 *   (Optional) A glossary.tsv file in the Translations folder for project-specific terms.
 
-### 2. Invoking Prompts
-You do **not** need to copy and paste the prompt content. If these files are placed in your configured prompts folder (e.g., .github/prompts or your user prompts folder), you can invoke them directly in GitHub Copilot Chat using the / command followed by the filename (or name defined in the file).
+### 2. Step-by-Step Example
 
-**Examples:**
-*   **Start Translation**: Type /al-translate-xlf
-*   **Update Glossary**: Type /al-update-glossary
-*   **Review Translations**: Type /al-review-translations
+Follow this flow to translate an app:
 
-Copilot will automatically load the instructions and execute the defined workflow.
+1.  **Open Copilot Chat**: Click the Chat icon in the VS Code sidebar.
+2.  **Select Agent (Optional)**: While the prompt automatically selects the agent, you can explicitly type `@al-translator` to ensure you are in the right context.
+3.  **Invoke Prompt**: Type `/al-translate-xlf` and press Enter.
+    *   *Note: You do not need to copy-paste the file content.*
+4.  **Execution**:
+    *   Copilot will read the **Prompt**.
+    *   It will switch to the **Agent** configuration.
+    *   It will read the **Instructions** to learn the rules.
+    *   It will start the workflow: Build -> Refresh -> Translate -> Save.
+5.  **Monitor**: Watch the progress as the agent processes batches of translations.
+
+**Other Commands:**
+*   **Update Glossary**: Type `/al-update-glossary` to find missing terms.
+*   **Review Translations**: Type `/al-review-translations` to check quality.
 
 ## Optimizations Applied
 
