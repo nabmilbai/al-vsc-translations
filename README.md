@@ -28,15 +28,6 @@ These files work together to handle the entire translation process.
     *   The "Brain". Contains the strict rules (e.g., "Never translate app names", "Preserve placeholders").
     *   Handles glossary merging logic automatically.
 
-### 2. Optional Utilities (Advanced)
-You do **not** need these for standard translation, but they are useful for maintenance.
-*   **al-review-translations.prompt.md**:
-    *   **Command**: /al-review-translations
-    *   **Purpose**: Quality Assurance. Checks existing translations for glossary compliance and placeholder errors. Useful for fixing "needs-review" states.
-*   **al-update-glossary.prompt.md**:
-    *   **Command**: /al-update-glossary
-    *   **Purpose**: Terminology Discovery. Scans your source code to find common terms that *should* be in your glossary but aren't.
-
 ## 🛠️ Usage
 
 ### Prerequisites
