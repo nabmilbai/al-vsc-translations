@@ -7,25 +7,25 @@ These files are refined versions of the original NAB AL Tools prompts and agents
 ## Files Overview
 
 ### Core Workflow
-*   **l-translate-xlf.instructions.md (The Brain)**:
+*   **`al-translate-xlf.instructions.md` (The Brain)**:
     *   Contains the core rules, invariants, and step-by-step logic for the translation workflow.
     *   Enforces the "Swedish First" policy for Nordic languages.
     *   Handles glossary logic via getGlossaryTerms (merging local and built-in glossaries automatically).
 
-*   **l-translator.agent.md (The Body)**:
+*   **`al-translator.agent.md` (The Body)**:
     *   Defines the AI Agent, its available tools, and the high-level execution loop.
     *   Orchestrates the build -> sync -> translate -> review cycle.
 
-*   **l-translate-xlf.prompt.md (The Trigger)**:
+*   **`al-translate-xlf.prompt.md` (The Trigger)**:
     *   The main entry point to start the translation task.
     *   References the Agent and Instructions to avoid logic duplication.
 
 ### Auxiliary Prompts
-*   **l-update-glossary.prompt.md**:
+*   **`al-update-glossary.prompt.md`**:
     *   Scans the app's source texts to identify common terms missing from the glossary.
     *   Suggests new entries for glossary.tsv.
 
-*   **l-review-translations.prompt.md**:
+*   **`al-review-translations.prompt.md`**:
     *   Performs a quality check on existing translations.
     *   Verifies glossary usage and placeholder integrity.
     *   Fixes or approves translations marked as "needs-review".
@@ -34,7 +34,7 @@ These files are refined versions of the original NAB AL Tools prompts and agents
 
 ### 1. Prerequisites
 *   VS Code with [NAB AL Tools](https://marketplace.visualstudio.com/items?itemName=nabsolutions.nab-al-tools) extension installed.
-*   An active Business Central project with an pp.json and Translations folder.
+*   An active Business Central project with an `app.json` and Translations folder.
 *   (Optional) A glossary.tsv file in the Translations folder for project-specific terms.
 
 ### 2. Invoking Prompts
@@ -51,7 +51,7 @@ Copilot will automatically load the instructions and execute the defined workflo
 
 *   **Automated Glossary Merging**: Removed manual file parsing; relies on getGlossaryTerms to merge local glossary.tsv with standard terms.
 *   **Unified Tool Naming**: Standardized tool calls to match the extension's namespace.
-*   **Mandatory Build Step**: Enforces l_build before translation to ensure g.xlf is current.
+*   **Mandatory Build Step**: Enforces al_build before translation to ensure g.xlf is current.
 *   **Simplified Prompting**: Decoupled the trigger prompt from the workflow logic to prevent drift.
 
 ---
