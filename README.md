@@ -82,5 +82,24 @@ Follow this flow to translate an app:
 *   **Mandatory Build Step**: Enforces al_build before translation to ensure g.xlf is current.
 *   **Simplified Prompting**: Decoupled the trigger prompt from the workflow logic to prevent drift.
 
+## Business Central AL Translation Glossary Handling
+
+**Do I Need to Update the Glossary?**
+
+In most cases, you do **NOT** need to manually update or maintain a glossary file.
+
+
+**When Should I Use a Custom Glossary or the Update Prompt?**
+
+- Only if you have project-specific or company-specific terms that are not covered by the standard BC glossary (for example, PrintVis-specific terminology).
+- In that case, maintain a custom `glossary.tsv` file and use the `al-update-glossary.prompt.md` prompt to help identify and add missing terms.
+
+| Scenario                                 | Action Needed?                |
+|-------------------------------------------|-------------------------------|
+| Standard BC terminology only              | No custom glossary needed     |
+| Project-specific or custom terms required | Use/maintain custom glossary  |
+
+> **If you are only using standard BC terms, you can skip the glossary update prompt and custom glossary file.**
+
 ---
 *Disclaimer: These files are derived from and optimized for the NAB AL Tools extension by NAB Solutions AB. They are intended to enhance the AI-assisted translation experience within that ecosystem.*
