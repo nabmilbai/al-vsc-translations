@@ -6,36 +6,52 @@ These files are refined versions of the original NAB AL Tools prompts and agents
 
 ## Files Overview
 
-*   **`translate-xlf.instructions.md` (The Brain)**:
+### Core Workflow
+*   **l-translate-xlf.instructions.md (The Brain)**:
     *   Contains the core rules, invariants, and step-by-step logic for the translation workflow.
     *   Enforces the "Swedish First" policy for Nordic languages.
-    *   Handles glossary logic via `getGlossaryTerms` (merging local and built-in glossaries automatically).
+    *   Handles glossary logic via getGlossaryTerms (merging local and built-in glossaries automatically).
 
-*   **`al-translator.agent.md` (The Body)**:
+*   **l-translator.agent.md (The Body)**:
     *   Defines the AI Agent, its available tools, and the high-level execution loop.
     *   Orchestrates the build -> sync -> translate -> review cycle.
 
-*   **`translate-xlf.prompt.md` (The Trigger)**:
-    *   A simplified entry point to start the translation task.
+*   **l-translate-xlf.prompt.md (The Trigger)**:
+    *   The main entry point to start the translation task.
     *   References the Agent and Instructions to avoid logic duplication.
+
+### Auxiliary Prompts
+*   **l-update-glossary.prompt.md**:
+    *   Scans the app's source texts to identify common terms missing from the glossary.
+    *   Suggests new entries for glossary.tsv.
+
+*   **l-review-translations.prompt.md**:
+    *   Performs a quality check on existing translations.
+    *   Verifies glossary usage and placeholder integrity.
+    *   Fixes or approves translations marked as "needs-review".
 
 ## Usage
 
-1.  **Prerequisites**:
-    *   VS Code with [NAB AL Tools](https://marketplace.visualstudio.com/items?itemName=nabsolutions.nab-al-tools) extension installed.
-    *   An active Business Central project with an `app.json` and `Translations` folder.
-    *   (Optional) A `glossary.tsv` file in the `Translations` folder for project-specific terms.
+### 1. Prerequisites
+*   VS Code with [NAB AL Tools](https://marketplace.visualstudio.com/items?itemName=nabsolutions.nab-al-tools) extension installed.
+*   An active Business Central project with an pp.json and Translations folder.
+*   (Optional) A glossary.tsv file in the Translations folder for project-specific terms.
 
-2.  **Execution**:
-    *   Open `translate-xlf.prompt.md`.
-    *   Copy the content.
-    *   Paste it into GitHub Copilot Chat (or your AI assistant) to trigger the workflow.
+### 2. Invoking Prompts
+You do **not** need to copy and paste the prompt content. If these files are placed in your configured prompts folder (e.g., .github/prompts or your user prompts folder), you can invoke them directly in GitHub Copilot Chat using the / command followed by the filename (or name defined in the file).
+
+**Examples:**
+*   **Start Translation**: Type /al-translate-xlf
+*   **Update Glossary**: Type /al-update-glossary
+*   **Review Translations**: Type /al-review-translations
+
+Copilot will automatically load the instructions and execute the defined workflow.
 
 ## Optimizations Applied
 
-*   **Automated Glossary Merging**: Removed manual file parsing; relies on `getGlossaryTerms` to merge local `glossary.tsv` with standard terms.
+*   **Automated Glossary Merging**: Removed manual file parsing; relies on getGlossaryTerms to merge local glossary.tsv with standard terms.
 *   **Unified Tool Naming**: Standardized tool calls to match the extension's namespace.
-*   **Mandatory Build Step**: Enforces `al_build` before translation to ensure `g.xlf` is current.
+*   **Mandatory Build Step**: Enforces l_build before translation to ensure g.xlf is current.
 *   **Simplified Prompting**: Decoupled the trigger prompt from the workflow logic to prevent drift.
 
 ---
