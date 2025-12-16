@@ -28,7 +28,6 @@ These files work together to handle the entire translation process.
     *   The "Brain". Contains the strict rules (e.g., "Never translate app names", "Preserve placeholders").
     *   Handles glossary merging logic automatically.
 
-<<<<<<< HEAD
 ### 2. Optional Utilities (Advanced)
 You do **not** need these for standard translation, but they are useful for maintenance.
 *   **al-review-translations.prompt.md**:
@@ -37,30 +36,13 @@ You do **not** need these for standard translation, but they are useful for main
 *   **al-update-glossary.prompt.md**:
     *   **Command**: /al-update-glossary
     *   **Purpose**: Terminology Discovery. Scans your source code to find common terms that *should* be in your glossary but aren't.
-=======
-### 2. Optional Utilities (Advanced)
-You do **not** need these for standard translation, but they are useful for maintenance.
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
 
-<<<<<<< HEAD
 ## 🛠️ Usage
-=======
-*   **al-review-translations.prompt.md**:
-    *   **Command**: /al-review-translations
-    *   **Purpose**: Quality Assurance. Checks existing translations for glossary compliance and placeholder errors. Useful for fixing "needs-review" states.
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
 
-<<<<<<< HEAD
 ### Prerequisites
 1.  **VS Code Extension**: [NAB AL Tools](https://marketplace.visualstudio.com/items?itemName=nabsolutions.nab-al-tools) installed.
 2.  **Project**: An open Business Central app (folder with app.json).
-=======
-*   **al-update-glossary.prompt.md**:
-    *   **Command**: /al-update-glossary
-    *   **Purpose**: Terminology Discovery. Scans your source code to find common terms that *should* be in your glossary but aren't.
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
 
-<<<<<<< HEAD
 ### How to Translate
 1.  Open the **Copilot Chat** in VS Code.
 2.  Type **/al-translate-xlf** and press Enter.
@@ -69,42 +51,15 @@ You do **not** need these for standard translation, but they are useful for main
     *   Sync the XLF files.
     *   Translate in batches of 100.
     *   Save progress automatically.
-=======
-## 🛠️ Usage
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
 
-<<<<<<< HEAD
 ## 🧠 Glossary Handling
 *   **Standard**: The agent automatically uses standard Business Central terminology.
 *   **Custom**: If you have a glossary.tsv in your Translations folder, the agent automatically merges it with the standard terms. You don't need to do anything extra.
-=======
-### Prerequisites
-1.  **VS Code Extension**: [NAB AL Tools](https://marketplace.visualstudio.com/items?itemName=nabsolutions.nab-al-tools) installed.
-2.  **Project**: An open Business Central app (folder with app.json).
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
 
-<<<<<<< HEAD
 ## 🔄 Handling [NAB: REVIEW] Tags
-=======
-### How to Translate
-1.  Open the **Copilot Chat** in VS Code.
-2.  Type **/al-translate-xlf** and press Enter.
-3.  Sit back. The agent will:
-    *   Build the app.
-    *   Sync the XLF files.
-    *   Translate in batches of 100.
-    *   Save progress automatically.
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
 
-<<<<<<< HEAD
 When source texts change in the .g.xlf file, existing translations may no longer be accurate. NAB AL Tools automatically flags these with [NAB: REVIEW] in the target text.
-=======
-## 🧠 Glossary Handling
-*   **Standard**: The agent automatically uses standard Business Central terminology.
-*   **Custom**: If you have a glossary.tsv in your Translations folder, the agent automatically merges it with the standard terms. You don't need to do anything extra.
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
 
-<<<<<<< HEAD
 ### What It Means
 - The source text has been modified since the last translation.
 - The current translation might need updating to match the new source.
@@ -117,17 +72,6 @@ When source texts change in the .g.xlf file, existing translations may no longer
 
 This ensures translation quality and prevents outdated or incorrect translations from persisting.
 
-=======
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
 ---
-<<<<<<< HEAD
-=======
+
 *Disclaimer: These files are derived from and optimized for the NAB AL Tools extension by NAB Solutions AB.*
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
-
-<<<<<<< HEAD
-*Disclaimer: These files are derived from and optimized for the NAB AL Tools extension by NAB Solutions AB.*
-
-=======
-
->>>>>>> b3f3e40d945da208d8186a3d8530e47fae6b8e80
