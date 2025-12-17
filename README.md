@@ -65,4 +65,10 @@ This ensures translation quality and prevents outdated or incorrect translations
 
 ---
 
+## 📋 Test Protocol
+
+For detailed testing procedures and protocols, refer to [Test Protocol](Test%20Protocol.md).
+
+---
+
 *Disclaimer: These files are derived from and optimized for the NAB AL Tools extension by NAB Solutions AB.*
